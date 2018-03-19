@@ -1,5 +1,6 @@
 package com.chinaopensource.soft.blogserver.user.controller;
 
+import com.chinaopensource.soft.blogserver.common.controller.ErrorMessage;
 import com.chinaopensource.soft.blogserver.user.model.User;
 import com.chinaopensource.soft.blogserver.user.service.UserService;
 import org.slf4j.Logger;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.chinaopensource.soft.blogserver.common.controller.BaseResponse;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping(value="/user")
@@ -38,7 +41,11 @@ public class UserController {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/addUser", method = RequestMethod.POST)
-	public String addUser(User user){
+	public String addUser(HttpServletRequest request, User user, String validateCode){
+		String sessionValidateCode = (String) request.getSession().getAttribute("validateCode");
+		if(!validateCode.equals(sessionValidateCode)) {
+			return BaseResponse.errorJson(ErrorMessage.ERR_SYSTERM);
+		}
 		this.userService.insert(user);
 		return BaseResponse.successJson();
 	}

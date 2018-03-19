@@ -59,6 +59,10 @@
                 //存储用户信息
                 var result = JSON.parse(data);
                 sessionStorage.setItem("name",result.data.name);
+                $("#headRegister").hide();
+                $("#headLogin").hide();
+                $("#headBlog").show();
+                $("#headLoginName").text(result.data.name);
             },
             error: function(data){
                 alert("获取失败");

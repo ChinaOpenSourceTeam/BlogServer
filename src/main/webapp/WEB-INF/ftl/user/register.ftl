@@ -83,7 +83,12 @@
             url: "${dynamicUrl}/user/addUser",
             data: $('#userRegister').serialize(),
             success: function(data){
-                window.location.href="${dynamicUrl}/user/login";
+                var result = JSON.parse(data);
+                if(result.code == 0){
+                    window.location.href="${dynamicUrl}/user/login";
+                }else {
+                    alert(result.message);
+                }
             },
             error: function(data){
                 alert("注册失败");
