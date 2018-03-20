@@ -32,4 +32,10 @@ public class BlogController {
         return BaseResponse.successJson();
     }
 
+    @ResponseBody
+    @RequestMapping(value="/findMyBlog", method = RequestMethod.GET)
+    public String findMyBlog(){
+        return BaseResponse.successJson( blogService.findMyBlog());
+    }
+
 }
