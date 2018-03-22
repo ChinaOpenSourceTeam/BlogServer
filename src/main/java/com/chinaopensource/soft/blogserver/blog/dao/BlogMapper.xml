@@ -31,4 +31,11 @@
 		WHERE deleteflag = 0
 		ORDER BY  createtime DESC
 	</select>
+
+	<select id="findMyBlogs" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select *
+		from blog
+		WHERE createuser = #{userId,jdbcType=INTEGER} and  deleteflag = 0
+		ORDER BY  createtime DESC
+	</select>
 </mapper>

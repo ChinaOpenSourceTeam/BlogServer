@@ -6,5 +6,8 @@ import java.util.List;
 
 public interface BlogService {
     int save(Blog blog);
+
     List<Blog> findNewBlogs();
+
+    List<Blog> findMyBlog();
 }

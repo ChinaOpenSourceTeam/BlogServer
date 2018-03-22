@@ -36,20 +36,43 @@
                         <button type="submit" class="btn btn-default">Submit</button>
                     </form>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="${dynamicUrl}/user/register">注册</a></li>
-                        <li><a href="${dynamicUrl}/user/login">登陆</a></li>
-                        <li><a href="${dynamicUrl}/blog/">写博客</a></li>
+                        <li><a id = "headRegister" href="${dynamicUrl}/user/register">注册</a></li>
+                        <li><a id = "headLogin" href="${dynamicUrl}/user/login">登陆</a></li>
+                        <li><a id= "headBlog" href="${dynamicUrl}/blog/">写博客</a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" id="headLoginName" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Action</a></li>
                                 <li><a href="#">Another action</a></li>
                                 <li><a href="#">Something else here</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
+                                <li><a onclick="logout()" href="${dynamicUrl}/user/logout">退出</a></li>
                             </ul>
                         </li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
+
+        <script>
+            $(function () {
+                var loginname = sessionStorage.getItem("name");
+                if(loginname != null && loginname != ""){
+                    $("#headRegister").hide();
+                    $("#headLogin").hide();
+                    $("#headBlog").show();
+                    $("#headLoginName").text(loginname);
+                }else {
+                    $("#headRegister").show();
+                    $("#headLogin").show();
+                    $("#headBlog").hide();
+                    $("#headLoginName").text("");
+                }
+            });
+
+            //退出
+            function logout() {
+                sessionStorage.clear();
+            }
+
+        </script>

@@ -76,7 +76,7 @@
                     "content":editor.getValue()
                 },
                 success: function(data){
-                    window.location.href="${dynamicUrl}/user/login";
+                    window.location.href="${dynamicUrl}/user/";
                 },
                 error: function(data){
                     alert("注册失败");

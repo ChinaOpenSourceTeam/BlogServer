@@ -13,10 +13,24 @@
             <#include "part/head.ftl"/>
         </div>
         <div class="row">
-            <div>
-                <h1>最新更新博客</h1>
+            <div class="col-md-6">
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">最新更新博客</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div id="newsblog"></div>
+                    </div>
+                </div>
+
             </div>
-            <div id="newsblog"></div>
+            <div class="col-md-6">
+                <div class="panel panel-primary"></div>
+            </div>
+
+
+
         </div>
         <div class="row">
             <#include "part/footer.ftl"/>

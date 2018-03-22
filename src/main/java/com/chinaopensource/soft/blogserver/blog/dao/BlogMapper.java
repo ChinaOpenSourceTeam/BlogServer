@@ -12,4 +12,6 @@ public interface BlogMapper {
     int save(Blog blog);
 
     List<Blog> findNewBlogs();
+
+    List<Blog> findMyBlogs(Integer userId);
 }

@@ -40,6 +40,11 @@ public class BlogServiceImpl implements BlogService {
         return blogMapper.findNewBlogs();
     }
 
+    @Override
+    public List<Blog> findMyBlog() {
+        return blogMapper.findMyBlogs(ShiroUser.getUserId());
+    }
+
     /**
      * 生成页面
      * @param blog
