@@ -157,6 +157,12 @@
         <property name="loginUrl" value="/user/login" />
 		<property name="successUrl" value="/user/"/>
 		<property name="unauthorizedUrl" value="/user/unauth"/>
+		<!-- 自定义filter-->
+		<property name="filters">
+			<map>
+				<entry key="simpleShiroFilter" value-ref="simpleShiroFilter" />
+			</map>
+		</property>
         <property name="filterChainDefinitions">
             <value>
 				/resources/** = anon
@@ -171,7 +177,7 @@
 
 				/user/logout = logout
 
-				/** = user
+				/** = simpleShiroFilter,user
             </value>
         </property>
     </bean>
